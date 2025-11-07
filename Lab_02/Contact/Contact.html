@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+    <title>My Website</title>
+    <link
+      rel="stylesheet"
+      href="./style.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="HomeIcon.png">
+  </head>
+  <body>
+    <header>
+      <h1>Polska Stal - Kontakt</h1>
+    </header>
+    <nav>
+        <a href="../Home.html" class="navHome">Start</a>
+        <a href="../Gallery/Gallery.html" class="navGallery">Galeria</a>
+        <a href="../Contact/Contact.html" class="navContact">Kontakt</a>
+    </nav>
+    <main class="main-container">
+      <form>
+          <label for="email">Twój adres e-mail:</label>
+          <input type="text" id="email" name="email" placeholder="grzegorz.brzeczyszczykiewicz@wojsko.pl" required>
+          <label for="temat">Wybierz temat:</label>
+          <select name="temat" id="temat" required>
+            <option value="" disabled selected></option>
+            <option value="ogolne">Pytanie ogólne</option>
+            <option value="sugestia">Sugestia / Propozycja</option>
+            <option value="konkret">Pytanie o konkretny pojazd</option>
+            <option value="blad">Zgłoszenie błędu na stronie</option>
+          </select>
+          <label for="wiadmosc">Wiadomość</label>
+          <textarea id="wiadmosc" placeholder="Tutaj wpisz treść swojej wiadomości"></textarea>
+
+          <input type="reset" class="button">
+          <input type="submit" class="button">
+      </form>
+    </main>
+    <footer>
+      Piotr Sączawa, 2025
+    </footer>
+    <button id="back-to-top-btn" title="Wróć na górę">&uarr;</button>
+    <script src="index.js"></script>
+  </body>
+</html>
