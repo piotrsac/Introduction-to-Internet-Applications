@@ -90,15 +90,49 @@ main {
   width: 100%;
 }
 
-main form {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
-  /* size: 100%; */
-  font-size: 25px;
-  margin-top: 20px;
+.form-container {
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 20px auto;
+  margin-bottom: 0;
+  padding: 30px;
+  box-sizing: border-box;
+  text-shadow: none;
+  box-shadow: 0 2px 7px rgba(0, 0, 0, 0.8);
+  background-color: rgba(143, 163, 30, 0.2);
+  text-shadow: rgb(0, 0, 0) 2px 2px 3px;
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-top: 0;
+  color: white;
+  font-size: 2.5rem;
+}
+
+.form-container p {
+  text-align: center;
+  margin-bottom: 25px;
+  color: white;
+  font-size: 1.4rem;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+  color: white;
+  background-color: #8fa31e;
+  width: 100%;
+  height: auto;
+  border-radius: 7px;
+  padding: 12px;
+  border: none;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.211);
+  margin: 10px 0;
+  box-sizing: border-box;
+  font-weight: bold;
+  font-size: 0.9rem;
+  transition: transform 0.3s ease, border 0.3s ease;
 }
 
 main form textarea::placeholder,
@@ -106,46 +140,41 @@ main form select::placeholder,
 main form input::placeholder {
   color: white;
   opacity: 70%;
+  font-weight: bold;
 }
 
-main form input,
-main form select,
-main form textarea {
-  color: white;
-  background-color: #8fa31e;
-  width: 400px;
-  /* flex-basis: 400px; */
-  flex-shrink: 1;
-  flex-grow: 1;
-  height: auto;
-  border-radius: 10px;
-  padding: 10px;
-  border: #333;
+.form-container input:focus,
+.form-container select:focus,
+.form-container textarea:focus {
+  transform: scale(1.02);
   box-shadow: none;
-  margin: 10px 0;
+  border: 1px black solid;
+  outline: none;
 }
 
-main form select {
-  width: 420px;
+.form-container label {
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 
-.button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  width: 420px;
-  background-color: #8fa31e;
+.form-container .button {
+  padding: 15px;
+  width: 100%;
+  background-color: #394c17;
   color: white;
   text-decoration: none;
   font-weight: bold;
-  font-size: large;
-  border-radius: 5px;
+  border-radius: 7px;
+  cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
+  border: none;
+  text-shadow: rgb(0, 0, 0) 2px 2px 3px;
 }
 
 .button:hover {
   background-color: #728518;
-  transform: scale(1.2);
-  cursor: pointer;
+  transform: scale(1.05);
 }
 
 .button:active {
@@ -161,7 +190,7 @@ footer {
   transition: 0.5s;
   text-shadow: rgb(0, 0, 0) 2px 2px 5px;
   padding: 20px;
-  margin-top: 10px;
+  margin-top: 0;
   align-content: center;
   transform-origin: 50% 100%;
 }

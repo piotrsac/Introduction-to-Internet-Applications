@@ -23,30 +23,35 @@
       <a href="../Contact/Contact.html" class="navContact">Kontakt</a>
     </nav>
     <main class="main-container">
-      <form>
-        <label for="email">Twój adres e-mail:</label>
-        <input
-          type="text"
-          id="email"
-          name="email"
-          placeholder="grzegorz.brzeczyszczykiewicz@wojsko.pl"
-          required
-        />
-        <label for="temat">Wybierz temat:</label>
-        <select name="temat" id="temat" required>
-          <option value="" disabled selected></option>
-          <option value="ogolne">Pytanie ogólne</option>
-          <option value="sugestia">Sugestia / Propozycja</option>
-          <option value="konkret">Pytanie o konkretny pojazd</option>
-          <option value="blad">Zgłoszenie błędu na stronie</option>
-        </select>
-        <label for="wiadmosc">Wiadomość</label>
-        <textarea
-          id="wiadmosc"
-          placeholder="Tutaj wpisz treść swojej wiadomości"
-        ></textarea>
-        <input type="submit" class="button" />
-      </form>
+      <div class="form-container">
+        <form>
+          <h2>SKONTAKTUJ SIĘ ZE MNĄ</h2>
+          <p>Wypełnij formularz, aby wysłać wiadomość.</p>
+          <label for="email">Twój adres e-mail:</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="grzegorz.brzeczyszczykiewicz@wojsko.pl"
+            required
+          />
+          <label for="temat">Wybierz temat:</label>
+          <select name="temat" id="temat" required>
+            <option value="" disabled selected>Wybierz z listy...</option>
+            <option value="ogolne">Pytanie ogólne</option>
+            <option value="sugestia">Sugestia / Propozycja</option>
+            <option value="konkret">Pytanie o konkretny pojazd</option>
+            <option value="blad">Zgłoszenie błędu na stronie</option>
+          </select>
+          <label for="wiadomosc">Wiadomość:</label>
+          <textarea
+            id="wiadomosc"
+            placeholder="Tutaj wpisz treść swojej wiadomości"
+            required
+          ></textarea>
+          <input type="submit" class="button" />
+        </form>
+      </div>
     </main>
     <footer>Piotr Sączawa, 2025</footer>
     <button id="back-to-top-btn" title="Wróć na górę">&uarr;</button>

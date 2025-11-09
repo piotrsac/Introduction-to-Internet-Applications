@@ -116,18 +116,13 @@ footer:hover {
 }
 
 .card {
-  /* width: 380px; */
   flex-basis: 350px;
   flex-shrink: 1;
   flex-grow: 1;
-  /* height: 380px; */
-  /* background-color: #8FA31E; */
-  /* background-color: #333; */
   transition: transform 0.4s ease;
   border-radius: 12px;
   overflow: hidden;
   text-align: center;
-  /* border: 2px solid #ccc; */
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.8);
   background-color: rgba(143, 163, 30, 0.2);
 }
@@ -141,12 +136,10 @@ footer:hover {
 
 .card-text {
   padding: 20px;
-  /* font-size: large; */
 }
 
 .card-text h3 {
   margin-top: 0;
-  /* color: #8FA31E; */
 }
 
 .card:hover {
