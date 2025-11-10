@@ -247,7 +247,8 @@ main form input::placeholder {
   cursor: pointer;
   border: var(--submit-button-border);
   text-shadow: var(--submit-button-shadow);
-  transition: background-color 0.3s ease, transform 0.3s ease, text-shadow 0.3s ease, color 0.3s ease, border 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.3s ease,
+    text-shadow 0.3s ease, color 0.3s ease, border 0.3s ease;
 }
 
 .button:hover {

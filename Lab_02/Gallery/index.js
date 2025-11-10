@@ -26,16 +26,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //theme toggle
 
-  const themeToggle = document.getElementById('theme-toggle');
+  const themeToggle = document.getElementById("theme-toggle");
   const htmlTag = document.documentElement;
 
   if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      htmlTag.classList.toggle('black-and-white-mode');
-      if (htmlTag.classList.contains('black-and-white-mode')) {
-        localStorage.setItem('theme', 'light');
+    themeToggle.addEventListener("click", () => {
+      htmlTag.classList.toggle("black-and-white-mode");
+      if (htmlTag.classList.contains("black-and-white-mode")) {
+        localStorage.setItem("theme", "light");
       } else {
-        localStorage.removeItem('theme');
+        localStorage.removeItem("theme");
       }
     });
   }

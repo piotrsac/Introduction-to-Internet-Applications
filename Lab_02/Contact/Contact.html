@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polska Stal</title>
     <script>
-    if (localStorage.getItem('theme') === 'light') {
-      document.documentElement.classList.add('black-and-white-mode');
-    }
+      if (localStorage.getItem("theme") === "light") {
+        document.documentElement.classList.add("black-and-white-mode");
+      }
     </script>
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -35,7 +35,7 @@
           <p>Wypełnij formularz, aby wysłać wiadomość.</p>
           <label for="email">Twój adres e-mail:</label>
           <input
-            type="text"
+            type="email"
             id="email"
             name="email"
             placeholder="grzegorz.brzeczyszczykiewicz@wojsko.pl"
@@ -52,14 +52,18 @@
           <label for="wiadomosc">Wiadomość:</label>
           <textarea
             id="wiadomosc"
-            placeholder="Tutaj wpisz treść swojej wiadomości"
+            placeholder="Tutaj wpisz treść swojej wiadomości..."
             required
+            minlength="10"
           ></textarea>
           <input type="submit" class="button" />
         </form>
         <div id="form-success-message">
           <h2>Dziękuję!</h2>
-          <p>Twoja wiadomość została wysłana. Odpowiem tak szybko, jak to możliwe.</p>
+          <p>
+            Twoja wiadomość została wysłana. Odpowiem tak szybko, jak to
+            możliwe.
+          </p>
         </div>
       </div>
     </main>

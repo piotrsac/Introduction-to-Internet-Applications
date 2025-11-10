@@ -16,9 +16,9 @@
 }
 
 html.black-and-white-mode {
-  --background-color: #FFFFFF;
+  --background-color: #ffffff;
   --main-text-color: #000000;
-  --nav-background-color: #FFFFFF;
+  --nav-background-color: #ffffff;
   --nav-hover-color: #abab9e4a;
   --nav-current-page-color: #404f271c;
   --buttons-background-color: #2a2727;
@@ -127,7 +127,8 @@ nav a {
   padding: 8px 16px;
   border-radius: 5px;
   text-shadow: var(--nav-a-text-shadow);
-  transition: background-color 0.3s ease, transform 0.5s, color 0.3s ease, text-shadow 0.3s ease;
+  transition: background-color 0.3s ease, transform 0.5s, color 0.3s ease,
+    text-shadow 0.3s ease;
 }
 
 nav a:hover {
@@ -219,7 +220,8 @@ footer:hover {
   cursor: pointer;
   font-size: 25px;
   opacity: 0;
-  transition: opacity 0.3s ease, visibility 0.3s ease, color 0.3s ease, background-color 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease, color 0.3s ease,
+    background-color 0.3s ease;
 }
 
 #back-to-top-btn.show {
