@@ -23,6 +23,22 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", checkScroll);
 
   backToTopButton.addEventListener("click", scrollToTop);
+
+  //theme toggle
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlTag = document.documentElement;
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      htmlTag.classList.toggle('black-and-white-mode');
+      if (htmlTag.classList.contains('black-and-white-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.removeItem('theme');
+      }
+    });
+  }
 });
 
 let videos = document.querySelectorAll(".card-video");

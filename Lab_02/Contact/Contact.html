@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Website</title>
+    <title>Polska Stal</title>
+    <script>
+    if (localStorage.getItem('theme') === 'light') {
+      document.documentElement.classList.add('black-and-white-mode');
+    }
+    </script>
     <link rel="stylesheet" href="./style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -21,10 +26,11 @@
       <a href="../Home.html" class="navHome">Start</a>
       <a href="../Gallery/Gallery.html" class="navGallery">Galeria</a>
       <a href="../Contact/Contact.html" class="navContact">Kontakt</a>
+      <button id="theme-toggle">💡</button>
     </nav>
     <main class="main-container">
       <div class="form-container">
-        <form>
+        <form id="contact-form">
           <h2>SKONTAKTUJ SIĘ ZE MNĄ</h2>
           <p>Wypełnij formularz, aby wysłać wiadomość.</p>
           <label for="email">Twój adres e-mail:</label>
@@ -51,6 +57,10 @@
           ></textarea>
           <input type="submit" class="button" />
         </form>
+        <div id="form-success-message">
+          <h2>Dziękuję!</h2>
+          <p>Twoja wiadomość została wysłana. Odpowiem tak szybko, jak to możliwe.</p>
+        </div>
       </div>
     </main>
     <footer>Piotr Sączawa, 2025</footer>

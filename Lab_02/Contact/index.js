@@ -23,4 +23,32 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", checkScroll);
 
   backToTopButton.addEventListener("click", scrollToTop);
+
+  //form completion message
+  const form = document.getElementById('contact-form');
+  const successMessage = document.getElementById('form-success-message');
+
+  if (form && successMessage) {
+    form.addEventListener('submit', (event) => {
+      event.preventDefault();
+      form.style.display = 'none';
+      successMessage.style.display = 'block';
+    });
+  }
+
+  //theme toggle
+
+  const themeToggle = document.getElementById('theme-toggle');
+  const htmlTag = document.documentElement;
+
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      htmlTag.classList.toggle('black-and-white-mode');
+      if (htmlTag.classList.contains('black-and-white-mode')) {
+        localStorage.setItem('theme', 'light');
+      } else {
+        localStorage.removeItem('theme');
+      }
+    });
+  }
 });
