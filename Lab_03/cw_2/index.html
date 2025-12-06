@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Password generator</title>
+  </head>
+  <body style="display: flex; flex-flow: column wrap">
+    <label for="minPasswordLength"> Minimum password length </label>
+    <input
+      name="minPasswordLength"
+      type="number"
+      value="6"
+      id="minPasswordLength" />
+    <label for="minPasswordLength"> Maximum password length </label>
+    <input
+      name="maxPasswordLength"
+      type="number"
+      value="10"
+      id="maxPasswordLength" />
+    <span>
+      <input
+        id="chkIncludeLowerChar"
+        type="checkbox"
+        name="chkIncludeLowerChar"
+        checked="checked" />(e.g. abcdef)
+    </span>
+    <span
+      ><input
+        id="chkIncludeUpperChar"
+        type="checkbox"
+        name="chkIncludeUpperChar"
+        checked="checked" />(e.g. ABCDEF)</span
+    >
+    <span
+      ><input
+        id="chkIncludeNumbers"
+        type="checkbox"
+        name="chkIncludeNumbers"
+        checked="checked" />(e.g. 123456)</span
+    >
+    <span
+      ><input
+        id="chkIncludeSymbols"
+        type="checkbox"
+        name="chkIncludeSymbols"
+        checked="checked" />(e.g. *@#+%)</span
+    >
+    <input type="button" value="Generate Password" onclick="generate()" />
+  </body>
+  <script>
+    const alphabet = [..."abcdefghijklmnopqrstuvwxyz"];
+    const upperAlphabet = [..."ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
+    const digits = [..."0123456789"];
+    const specialCharacters = [
+      ..."\!\"\#\$\%\&'\(\)\*\+\,\-\.\/\:\;\<\=\>\?\@\[\]\^\_\`\{\|\}\~",
+    ];
+
+    const minPasswordLength = document.getElementById("minPasswordLength");
+    const maxPasswordLength = document.getElementById("maxPasswordLength");
+    const includeLower = document.getElementById("chkIncludeLowerChar");
+    const includeUpper = document.getElementById("chkIncludeUpperChar");
+    const includeDigits = document.getElementById("chkIncludeNumbers");
+    const includeSpecial = document.getElementById("chkIncludeSymbols");
+
+    function getRandomChar(charArray) {
+      if (!charArray || charArray.length === 0) return "";
+      const randomBuffer = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer);
+      return charArray[randomBuffer[0] % charArray.length];
+    }
+
+    function getRandomInt(min, max) {
+      const range = max - min + 1;
+      const randomBuffer = new Uint32Array(1);
+      window.crypto.getRandomValues(randomBuffer);
+      return min + (randomBuffer[0] % range);
+    }
+
+    function generate() {
+      let minLength = parseInt(minPasswordLength.value);
+      let maxLength = parseInt(maxPasswordLength.value);
+      let numberOfOptions = 0;
+      if (minLength > maxLength) {
+        alert("Seriously? Minimum is bigger than maximum");
+        return;
+      }
+
+      function shuffleArray(array) {
+        let result = [...array];
+        for (let i = result.length - 1; i > 0; i--) {
+          const randomBuffer = new Uint32Array(1);
+          window.crypto.getRandomValues(randomBuffer);
+          const randomIndex = randomBuffer[0] % (i + 1);
+          [result[i], result[randomIndex]] = [result[randomIndex], result[i]];
+        }
+        return result;
+      }
+
+      const pool = [];
+      const password = [];
+
+      if (includeLower.checked) {
+        numberOfOptions++;
+        pool.push(...alphabet);
+        password.push(getRandomChar(alphabet));
+      }
+      if (includeUpper.checked) {
+        numberOfOptions++;
+        pool.push(...upperAlphabet);
+        password.push(getRandomChar(upperAlphabet));
+      }
+      if (includeDigits.checked) {
+        numberOfOptions++;
+        pool.push(...digits);
+        password.push(getRandomChar(digits));
+      }
+      if (includeSpecial.checked) {
+        numberOfOptions++;
+        pool.push(...specialCharacters);
+        password.push(getRandomChar(specialCharacters));
+      }
+      if (numberOfOptions === 0) {
+        alert("You must select at least one option!");
+        return;
+      }
+      if (numberOfOptions > minLength) {
+        alert("The minimum length is lower than options checked!");
+        return;
+      }
+
+      const targetLength = getRandomInt(minLength, maxLength);
+
+      const remainingLength = targetLength - password.length;
+
+      for (let i = 0; i < remainingLength; i++)
+        password.push(getRandomChar(pool));
+
+      const finalPasswordArray = shuffleArray(password);
+
+      const finalString = finalPasswordArray.join("");
+
+      console.log("Wygenerowane hasło: ", finalString);
+      alert("Wygenerowane hasło: " + finalString);
+    }
+  </script>
+</html>

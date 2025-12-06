@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Stoper</title>
+  </head>
+  <body>
+    <p id="demo" style="text-align: center; margin-top: 20%">
+      Click on the button above and I will count forever.
+    </p>
+    <div id="button-container" style="text-align: center">
+      <button onClick="stopTimer()">Stop counter!</button>
+      <button onClick="startTimer()">Start counter!</button>
+      <button onClick="resetTimer()">Reset counter!</button>
+    </div>
+
+    <script>
+      var c = 0;
+      var myTimer;
+      var isRunning = false;
+
+      function myCounter() {
+        counterToTime(++c);
+      }
+
+      function startTimer() {
+        if (!isRunning) {
+          myTimer = setInterval(myCounter, 1000);
+          isRunning = true;
+        }
+      }
+
+      function stopTimer() {
+        clearInterval(myTimer);
+        isRunning = false;
+      }
+
+      function resetTimer() {
+        stopTimer();
+        c = 0;
+        counterToTime(c);
+      }
+
+      function counterToTime(c) {
+        var seconds = c % 60;
+        var minutes = Math.floor(c / 60);
+
+        if (seconds == 0 && minutes == 0) {
+          document.getElementById("demo").innerHTML = seconds + "s";
+        } else if (seconds < 60 && minutes == 0) {
+          document.getElementById("demo").innerHTML = seconds + "s";
+        } else {
+          if (seconds <= 9)
+            document.getElementById("demo").innerHTML =
+              minutes + "min " + "0" + seconds + "s";
+          else
+            document.getElementById("demo").innerHTML =
+              minutes + "min " + seconds + "s";
+        }
+      }
+    </script>
+  </body>
+</html>
