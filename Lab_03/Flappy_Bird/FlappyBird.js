@@ -6,6 +6,14 @@ const STATE = {
 };
 let currentState = STATE.GET_READY;
 
+//fps parameters
+let lastTime = 0;
+let pipeTimer = 0;
+let birdAnimationTimer = 0;
+const pipeInterval = 1500;
+const stationaryAnimationInterval = 25;
+const movingAnimationInterval = 15;
+
 //board
 let board;
 let boardWidth = 288;
@@ -123,7 +131,7 @@ window.onload = function () {
 
   const bgMusic = new Audio("./assets/Sound Efects/Pixelated Sky.mp3");
   bgMusic.loop = true;
-  bgMusic.volume = 0.03;
+  bgMusic.volume = 0.1;
   bgMusic.play();
 
   //score images
@@ -155,24 +163,33 @@ window.onload = function () {
   medalPlatinumImg.src = "./assets/UI/Medals/platinum.png";
 
   this.requestAnimationFrame(update);
-  this.setInterval(placePipes, 1500);
+  // this.setInterval(placePipes, 2100);
   this.document.addEventListener("keydown", moveBird);
   this.document.addEventListener("mousedown", moveBird);
   this.document.addEventListener("touchstart", moveBird);
 };
 
-function update() {
+function update(timestamp) {
   context.imageSmoothingEnabled = false;
   requestAnimationFrame(update);
   context.clearRect(0, 0, board.width, board.height);
+
+  if (!lastTime) lastTime = timestamp;
+
+  let deltaTimeMs = timestamp - lastTime;
+  lastTime = timestamp;
+
+  let delta = deltaTimeMs / (1000 / 180);
 
   frameCount++;
 
   if (currentState == STATE.GET_READY) {
     //bird animation
-    if (frameCount % 25 == 0) {
+    birdAnimationTimer += delta;
+    if (birdAnimationTimer > 25) {
       birdFrame++;
       birdFrame %= 4;
+      birdAnimationTimer = 0;
     }
 
     let centerBirdY = birdY;
@@ -196,12 +213,15 @@ function update() {
       context.drawImage(messageImg, msgX, msgY);
     }
   } else if (currentState == STATE.GAME) {
-    if (frameCount % 15 == 0) {
-      birdFrame = (birdFrame + 1) % 4;
+    birdAnimationTimer += delta;
+    if (birdAnimationTimer > 15) {
+      birdFrame++;
+      birdFrame %= 4;
+      birdAnimationTimer = 0;
     }
 
-    bird.y = Math.max(bird.y + velocityY, -boardHeight / 5);
-    velocityY += gravity;
+    bird.y = Math.max(bird.y + (velocityY * delta), -boardHeight / 5);
+    velocityY += gravity * delta;
 
     //bird
     let currentBirdImg = birdImages[birdFrame];
@@ -225,9 +245,16 @@ function update() {
     context.restore();
 
     //pipes
+
+    pipeTimer += deltaTimeMs;
+    if (pipeTimer > pipeInterval) {
+      placePipes();
+      pipeTimer = 0;
+    }
+
     for (let i = 0; i < pipeArray.length; i++) {
       let pipe = pipeArray[i];
-      pipe.x += velocityX;
+      pipe.x += velocityX * delta;
 
       if (pipe.isTopPipe) {
         context.save();
@@ -259,7 +286,7 @@ function update() {
       pipeArray.shift();
 
     //base
-    base.x += velocityX;
+    base.x += velocityX * delta;
     context.drawImage(baseImg, base.x, base.y, base.width, base.height);
     if (base.x <= boardWidth - baseWidth) base.x = 0;
     if (detectCollision(bird, base)) {
@@ -283,8 +310,8 @@ function update() {
       }
     }
 
-    bird.y += velocityY;
-    velocityY += gravity;
+    bird.y += velocityY * delta;
+    velocityY += gravity * delta;
 
     let currentBirdImg = birdImages[1];
     context.save();
@@ -438,13 +465,13 @@ function moveBird(e) {
       swooshSound.play();
       currentState = STATE.GAME;
       bird.y = birdY;
-      velocityY = -2.7;
+      velocityY = -2.7 * delta;
       wingSound.play();
       return;
     }
 
     if (currentState == STATE.GAME) {
-      velocityY = -2.7;
+      velocityY = -2.7 * delta;
       wingSound.currentTime = 0;
       wingSound.play();
       return;

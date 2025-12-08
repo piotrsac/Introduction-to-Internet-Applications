@@ -111,8 +111,7 @@
             const sortOrder = document.getElementById('sortSelect').value;
 
             let filtered = originalProducts.filter(product => {
-                return product.title.toLowerCase().includes(searchText) ||
-                       product.description.toLowerCase().includes(searchText);
+                return product.title.toLowerCase().includes(searchText)
             });
 
             if (sortOrder === 'asc') {
