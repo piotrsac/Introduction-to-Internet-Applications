@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista Produktów API</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        padding: 20px;
+      }
+
+      .controls {
+        margin-bottom: 20px;
+        padding: 10px;
+        background: #f4f4f4;
+        border-radius: 8px;
+      }
+      input,
+      select {
+        padding: 8px;
+        margin-right: 10px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+      th,
+      td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+      }
+      th {
+        background-color: #333;
+        color: white;
+      }
+
+      td img {
+        width: 80px;
+        height: auto;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Produkty</h1>
+
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Szukaj produktu..." />
+
+      <select id="sortSelect">
+        <option value="original">Oryginalna kolejność</option>
+        <option value="asc">Rosnąco (A-Z)</option>
+        <option value="desc">Malejąco (Z-A)</option>
+      </select>
+    </div>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Zdjęcie</th>
+          <th>Tytuł</th>
+          <th>Opis</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody"></tbody>
+    </table>
+
+    <script>
+      let originalProducts = [];
+
+      async function getData() {
+        const url = "https://dummyjson.com/products";
+        try {
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`Response status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          originalProducts = data.products.slice(0, 30);
+          renderTable(originalProducts);
+          console.log(data);
+        } catch (error) {
+          console.error(error.message);
+        }
+      }
+
+      function renderTable(data) {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+
+        data.forEach((product) => {
+          const row = `
+                <tr>
+                    <td><img src="${product.thumbnail}" alt="${product.title}"></td>
+                    <td><strong>${product.title}</strong></td>
+                    <td>${product.description}</td>
+                </tr>
+            `;
+          tbody.innerHTML += row;
+        });
+      }
+
+      function processData() {
+            const searchText = document.getElementById('searchInput').value.toLowerCase();
+            const sortOrder = document.getElementById('sortSelect').value;
+
+            let filtered = originalProducts.filter(product => {
+                return product.title.toLowerCase().includes(searchText) ||
+                       product.description.toLowerCase().includes(searchText);
+            });
+
+            if (sortOrder === 'asc') {
+                filtered.sort((a, b) => a.title.localeCompare(b.title));
+            } else if (sortOrder === 'desc') {
+                filtered.sort((a, b) => b.title.localeCompare(a.title));
+            }
+
+            renderTable(filtered);
+        }
+
+      document.getElementById('searchInput').addEventListener('input', processData);
+      document.getElementById('sortSelect').addEventListener('change', processData);
+
+      getData();
+    </script>
+  </body>
+</html>
