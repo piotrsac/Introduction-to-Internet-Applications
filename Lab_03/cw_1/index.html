@@ -1,18 +1,100 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Stoper</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+
+      .stopwatch-card {
+        background-color: white;
+        padding: 40px;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 90%;
+        max-width: 400px;
+      }
+
+      .info-text {
+        color: #555;
+        margin-bottom: 20px;
+        font-size: 0.9rem;
+      }
+
+
+      #demo {
+        font-size: 2.5rem;
+        margin: 20px 0 40px 0;
+        font-weight: bold;
+        color: #333;
+        font-family: "Courier New", Courier, monospace;
+        text-shadow: 1px 1px 0px #eee;
+        min-height: 3rem;
+      }
+
+      #button-container {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 12px 20px;
+        border: none;
+        border-radius: 50px;
+        font-size: 0.85rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: white;
+        cursor: pointer;
+        transition: transform 0.1s, box-shadow 0.2s;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      button:nth-child(1) {
+        background-image: linear-gradient(to right, #ff5f6d, #ffc371);
+      }
+      button:nth-child(2) {
+        background-image: linear-gradient(to right, #11998e, #38ef7d);
+      }
+      button:nth-child(3) {
+        background-image: linear-gradient(to right, #4facfe, #00f2fe);
+      }
+    </style>
   </head>
   <body>
-    <p id="demo" style="text-align: center; margin-top: 20%">
-      Click on the button above and I will count forever.
-    </p>
-    <div id="button-container" style="text-align: center">
-      <button onClick="stopTimer()">Stop counter!</button>
-      <button onClick="startTimer()">Start counter!</button>
-      <button onClick="resetTimer()">Reset counter!</button>
+    <div class="stopwatch-card">
+      <p class="info-text">
+        Click on the button below and I will count forever.
+      </p>
+
+      <div id="demo">0s</div>
+
+      <div id="button-container">
+        <button onClick="stopTimer()">Stop counter!</button>
+        <button onClick="startTimer()">Start counter!</button>
+        <button onClick="resetTimer()">Reset counter!</button>
+      </div>
     </div>
 
     <script>
