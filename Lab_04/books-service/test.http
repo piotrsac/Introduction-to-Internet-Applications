@@ -1,0 +1,29 @@
+
+GET http://localhost:3001/api/books
+###
+POST http://localhost:3001/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJqYW5Aa293YWxza2kucGwiLCJpYXQiOjE3NjgwNDczNDksImV4cCI6MTc2ODA0ODI0OX0.yr8JX8ZwMzZYYxPhW1CVzLTm58PvTnT7hoBqggmqaxQ
+
+{
+    "title": "The Witcher",
+    "author": "Andrzej Sapkowski",
+    "year": 1993
+}
+###
+POST http://localhost:3001/api/books
+Content-Type: application/json
+
+{
+    "title": "Harry Potter",
+    "author": "J.K. Rowling",
+    "year": 1997
+}
+###
+GET http://localhost:3001/api/books
+###
+GET http://localhost:3001/api/books/1
+###
+DELETE http://localhost:3001/api/books/1
+###
+GET http://localhost:3001/api/books

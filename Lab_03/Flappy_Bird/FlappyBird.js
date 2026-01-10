@@ -11,8 +11,6 @@ let lastTime = 0;
 let pipeTimer = 0;
 let birdAnimationTimer = 0;
 const pipeInterval = 1500;
-const stationaryAnimationInterval = 25;
-const movingAnimationInterval = 15;
 
 //board
 let board;
@@ -163,7 +161,6 @@ window.onload = function () {
   medalPlatinumImg.src = "./assets/UI/Medals/platinum.png";
 
   this.requestAnimationFrame(update);
-  // this.setInterval(placePipes, 2100);
   this.document.addEventListener("keydown", moveBird);
   this.document.addEventListener("mousedown", moveBird);
   this.document.addEventListener("touchstart", moveBird);
@@ -384,7 +381,7 @@ function update(timestamp) {
       let sbHeight = scoreboardImg.height * scale;
 
       let sbX = (boardWidth - scoreboardImg.width * scale) / 2;
-      let sbY = boardHeight / 2 - 50; //
+      let sbY = boardHeight / 2 - 50;
 
       context.drawImage(scoreboardImg, sbX, sbY, sbWidth, sbHeight);
 
@@ -465,13 +462,13 @@ function moveBird(e) {
       swooshSound.play();
       currentState = STATE.GAME;
       bird.y = birdY;
-      velocityY = -2.7 * delta;
+      velocityY = -2.7;
       wingSound.play();
       return;
     }
 
     if (currentState == STATE.GAME) {
-      velocityY = -2.7 * delta;
+      velocityY = -2.7;
       wingSound.currentTime = 0;
       wingSound.play();
       return;

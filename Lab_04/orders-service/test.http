@@ -1,0 +1,39 @@
+###
+POST http://localhost:3002/api/orders
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "bookId": 999,
+    "quantity": 2
+}
+
+###
+POST http://localhost:3002/api/orders
+Content-Type: application/json
+
+{
+    "userId": 1,
+    "bookId": 1,
+    "quantity": 5
+}
+
+###
+GET http://localhost:3002/api/orders/1
+
+###
+PATCH http://localhost:3002/api/orders/1
+Content-Type: application/json
+
+{
+    "quantity": 10
+}
+
+###
+GET http://localhost:3002/api/orders/1
+
+###
+DELETE http://localhost:3002/api/orders/1
+
+###
+GET http://localhost:3002/api/orders/1
