@@ -1,17 +1,23 @@
 import Koszyk from "./components/koszyk/Koszyk";
 import NowyKoszyk from "./components/koszyk/NowyKoszyk";
+import Licznik from "./components/liczniki/Licznik";
+import NowyLicznik from "./components/liczniki/NowyLicznik";
 
-function Welcome(props: { name: string }) {
-  let letter: string = 'M';
-  if (props.name.toLowerCase().endsWith('a')) {
-    letter = 'K';
-  }
-  return <h1>Hello, {props.name} {letter}</h1>;
-}
+// function Welcome(props: { name: string }) {
+//   let letter: string = "M";
+//   if (props.name.toLowerCase().endsWith("a")) {
+//     letter = "K";
+//   }
+//   return (
+//     <h1>
+//       Hello, {props.name} {letter}
+//     </h1>
+//   );
+// }
 
-function Goodbye(props: {name: string}){
-  return <h2>Goodbye, {props.name}</h2>
-}
+// function Goodbye(props: { name: string }) {
+//   return <h2>Goodbye, {props.name}</h2>;
+// }
 
 function App() {
   return (
@@ -21,9 +27,10 @@ function App() {
       <Welcome name="Kasia" />
       <br/>
       <Goodbye name = "Jacek"/> */}
-      <Koszyk/>
-      <hr/>
-      <NowyKoszyk/>
+      <Koszyk />
+      <hr />
+      <NowyKoszyk />
+      <NowyLicznik />
     </div>
   );
 }
