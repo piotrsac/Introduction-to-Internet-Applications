@@ -1,7 +1,13 @@
+import Formularz from "./components/formularze/Formularz";
+import Logowanie from "./components/formularze/Logowanie";
+import Aktualizacja from "./components/inne/Aktualizacja";
+import Ternary from "./components/inne/Ternary";
+// import Haslo from "./components/formularze/Haslo";
 import Koszyk from "./components/koszyk/Koszyk";
 import NowyKoszyk from "./components/koszyk/NowyKoszyk";
-import Licznik from "./components/liczniki/Licznik";
 import NowyLicznik from "./components/liczniki/NowyLicznik";
+import Studenci from "./components/studenci/Studenci";
+import StudentManager from "./components/studenci/StudentManager";
 
 // function Welcome(props: { name: string }) {
 //   let letter: string = "M";
@@ -31,6 +37,13 @@ function App() {
       <hr />
       <NowyKoszyk />
       <NowyLicznik />
+      <Formularz/>
+      {/* <Haslo/> */}
+      <Logowanie/>
+      <Ternary/>
+      <Aktualizacja/>
+      <Studenci/>
+      <StudentManager/>
     </div>
   );
 }
