@@ -5,9 +5,13 @@ import Ternary from "./components/inne/Ternary";
 // import Haslo from "./components/formularze/Haslo";
 import Koszyk from "./components/koszyk/Koszyk";
 import NowyKoszyk from "./components/koszyk/NowyKoszyk";
+import Licznik from "./components/efekty/Licznik";
 import NowyLicznik from "./components/liczniki/NowyLicznik";
 import Studenci from "./components/studenci/Studenci";
 import StudentManager from "./components/studenci/StudentManager";
+import Tytul from "./components/efekty/Tytul";
+import Odliczanie from "./components/efekty/Odliczanie";
+import Komentarze from "./components/produkty/Komentarze";
 
 // function Welcome(props: { name: string }) {
 //   let letter: string = "M";
@@ -44,6 +48,10 @@ function App() {
       <Aktualizacja/>
       <Studenci/>
       <StudentManager/>
+      <Licznik/>
+      <Tytul/>
+      <Odliczanie/>
+      <Komentarze/>
     </div>
   );
 }
