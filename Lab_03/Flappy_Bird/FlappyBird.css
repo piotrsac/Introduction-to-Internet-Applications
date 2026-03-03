@@ -1,7 +1,20 @@
 body {
-    text-align: center;
+  text-align: center;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 #board {
-    background-image: url("./assets/Flappy\ Bird/background-day.png");
+  height: 100vh;
+  width: auto;
+  background-image: url("./assets/Flappy\ Bird/background-day.png");
+  background-size: 100% 100%;
+  margin: 0;
+  padding: 0;
+  image-rendering: pixelated;
 }

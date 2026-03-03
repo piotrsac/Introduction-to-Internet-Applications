@@ -12,6 +12,9 @@ let pipeTimer = 0;
 let birdAnimationTimer = 0;
 const pipeInterval = 1500;
 
+//drawing scale
+let drawScale = 2;
+
 //board
 let board;
 let boardWidth = 288;
